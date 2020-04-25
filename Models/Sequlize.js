@@ -1,4 +1,5 @@
 const Sequelize = require('sequelize');
+const User = require('./User');
 
 const sequelize = new Sequelize('mysql://root:19978@localhost:3306/diploma_project');
 

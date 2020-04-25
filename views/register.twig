@@ -25,5 +25,8 @@
             <button class="btn btn-success submitButton" type="submit">Register</button>
         </div>
     </form>
+        {% if error %}
+        <h5>{{ error }}</h5>
+        {% endif %}
     </div>
 {% endblock %}

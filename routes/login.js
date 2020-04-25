@@ -1,19 +1,23 @@
-var express = require('express');
-var router = express.Router();
-const { body,validationResult } = require('express-validator/check');
-const { sanitizeBody } = require('express-validator/filter');
+const express = require('express');
+const router = express.Router();
 
 
-/* GET home page. */
 router.get('/', function(req, res, next) {
-    res.render('register', { title: 'Register' });
+    /* TO DO
+        Create the login form in twig
+     */
+    res.render('login', { title: 'Login' });
 });
 
 router.post('/', function(req, res, next) {
-    var username = req.body.name;
-    console.log(req.body)
-
-    // res.render('register', { title: 'Register' });
+    let {username, password} = req.body;
+    /*
+        TO DO
+        1. Verify the user exists in the database;
+        2. Check the password matches (The password must be encrypted)
+        3. Save the user in the session.
+     */
+    res.render('login', { title: 'Login' });
 });
 
 module.exports = router;

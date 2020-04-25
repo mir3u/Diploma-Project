@@ -3,7 +3,7 @@ const sequelize = new Sequelize('sqlite::memory');
 
 class User extends Model {}
 
-User.init({
+const User = sequelize.define("user", {
     name: {
         type: DataTypes.STRING,
         allowNull: false
@@ -26,4 +26,9 @@ User.init({
     modelName: 'User'
 });
 
-module.exports(User);
+(async () => {
+    await sequelize.sync({ force: true });
+    // Code here
+
+})();
+module.exports = User;
