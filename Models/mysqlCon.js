@@ -6,11 +6,22 @@ const  host = process.env.DB_HOST;
 const user = process.env.DB_USER;
 const password = process.env.DB_PASS;
 
+const port = process.env.DB_PORT;
+const ssl = process.env.DB_SSL;
+const database = process.env.DB_DB;
+
+if (this.ssl) {
+    // Default rejectUnauthorized to true
+    this.ssl.rejectUnauthorized = this.ssl.rejectUnauthorized !== false;
+}
+
 var con = mysql.createConnection({
     host: host,
     user: user,
     password: password,
-    database: "diploma_project"
+    database: database,
+    port: port,
+    ssl: true
 });
 
 module.exports = {
