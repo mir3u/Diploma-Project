@@ -1,9 +1,41 @@
 {% extends 'base.twig' %}
+{% block javascripts %}
+<script>
+    $(function() {
+        $("form[name='registration']").validate({
+            rules: {
+                name: "required",
+                username: "required",
+                email: {
+                    required: true,
+                    email: true
+                },
+                password: {
+                    required: true,
+                    minlength: 5
+                }
+            },
+            messages: {
+                name: "Please enter a name!",
+                password: {
+                    required: "Please provide a password!",
+                    minlength: "Your password must be at least 5 characters long!"
+                },
+                email: "Please enter a valid email address"
+            },
+            submitHandler: function(form) {
+                form.submit();
+            }
+        });
+    })
+
+</script>
+{% endblock %}
 
 {% block body %}
     <div class="login-form">
         <h1>Register Form</h1>
-    <form method="post" action="/register" validate>
+    <form method="post" name='registration' action="/register" validate>
         <div class="form-field">
             <label for="name">Name</label>
             <input class="input" id="name" name="name" type="text" />
@@ -30,3 +62,4 @@
         {% endif %}
     </div>
 {% endblock %}
+
